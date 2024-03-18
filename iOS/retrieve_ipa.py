@@ -47,9 +47,9 @@ def main():
     app_bundle_path = f"{app_name}.app"
     ipa_name = f"/var/root/{app_name}.ipa"
 
-    cmd = f"cd {app_uuid_path} && mkdir {payload_path} && cp -r {app_bundle_path} {payload_path} && zip -r {app_bundle_path} {payload_path}"
-    ssh_command(ip, password, cmd)
-    """
+    cd_uuid = f"cd /var/containers/Bundle/Application/{app_uuid_path}"
+    ssh_command(ip, password, cd_uuid)
+
     mkdir_payload_command = f"mkdir {payload_path}"
     ssh_command(ip, password, mkdir_payload_command)
 
@@ -58,7 +58,7 @@ def main():
 
     zip_command = f"zip -r {ipa_name} {payload_path}"
     ssh_command(ip, password, zip_command)
-    """
+
     # SFTP commands
     cwd = os.getcwd()
     sftp_get(ip, password, ipa_name, cwd)
