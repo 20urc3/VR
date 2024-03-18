@@ -43,7 +43,7 @@ def main():
         sys.exit(1)
 
     app_uuid_path = match.group(1)
-    payload_path = f"{app_uuid_path}Payload"
+    payload_path = "Payload"
     app_bundle_path = f"{app_name}.app"
     ipa_name = f"/var/root/{app_name}.ipa"
 
