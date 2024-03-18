@@ -53,7 +53,7 @@ def main():
     mkdir_payload_command = f"mkdir {payload_path}"
     ssh_command(ip, password, mkdir_payload_command)
 
-    copy_app_command = f"cp -r {app_bundle_path} {payload_path}/"
+    copy_app_command = f"cp -r {app_bundle_path} {payload_path}"
     ssh_command(ip, password, copy_app_command)
 
     zip_command = f"zip -r {ipa_name} {payload_path}"
