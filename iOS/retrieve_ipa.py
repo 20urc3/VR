@@ -1,8 +1,4 @@
-import paramiko
-import sys
-import os
-import re
-import argparse
+import paramiko, sys, os, re, argparse
 
 def ssh_command(ip, password, command):
     client = paramiko.SSHClient()
