@@ -48,6 +48,7 @@ def main():
     ipa_name = f"/var/root/{app_name}.ipa"
 
     cd_uuid = f"cd /var/containers/Bundle/Application/{app_uuid_path}"
+    print(f"trying to CD in {cd_uuid}")
     ssh_command(ip, password, cd_uuid)
 
     mkdir_payload_command = f"mkdir {payload_path}"
