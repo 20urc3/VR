@@ -34,7 +34,6 @@ def main():
     password = args.password
     app_name = args.app_name
 
-
     # SSH commands
     app_path_command = f"cd /var/containers/Bundle/Application/ && find . -type d -name '*{app_name}*' | head -n 1"
     app_path_output = ssh_command(ip, password, app_path_command)
@@ -61,7 +60,7 @@ def main():
     ssh_command(ip, password, zip_command)
 
     # SFTP commands
-    sftp_get(ip, password, ipa_name, f"{ipa_name}.ipa")
+    sftp_get(ip, password, ipa_name)
 
 if __name__ == "__main__":
     main()
