@@ -42,7 +42,7 @@ def main():
         print("Error: Couldn't find app path")
         sys.exit(1)
 
-    app_uuid_path = match.group(1)
+    app_uuid_path = match.group(1)[2:]
     payload_path = "Payload"
     app_bundle_path = f"{app_name}.app"
     ipa_name = f"/var/root/{app_name}.ipa"
