@@ -60,7 +60,8 @@ def main():
     ssh_command(ip, password, zip_command)
 
     # SFTP commands
-    sftp_get(ip, password, ipa_name)
+    cwd = os.getcwd()
+    sftp_get(ip, password, ipa_name, cwd)
 
 if __name__ == "__main__":
     main()
