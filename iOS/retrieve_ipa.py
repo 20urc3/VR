@@ -58,7 +58,7 @@ def main():
     ssh_command(ip, password, zip_command)
 
     # SFTP commands
-    cwd = os.getcwd()
+    cwd = os.path.join(os.getcwd(), f"{app_name}.ipa"
     sftp_get(ip, password, ipa_name, cwd)
 
 if __name__ == "__main__":
