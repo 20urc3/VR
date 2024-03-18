@@ -44,8 +44,8 @@ def main():
 
     app_uuid_path = match.group(1)[2:]
     app_path = "/var/containers/Bundle/Application/"
-    payload_path = "Payload"
-    app_bundle_path = f"{app_name}.app"
+    payload_path = "/Payload"
+    app_bundle_path = f"/{app_name}.app"
     ipa_name = f"/var/root/{app_name}.ipa"
 
     mkdir_payload_command = f"mkdir {app_path}{app_uuid_path}{payload_path}"
