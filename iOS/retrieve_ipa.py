@@ -43,21 +43,18 @@ def main():
         sys.exit(1)
 
     app_uuid_path = match.group(1)[2:]
+    app_path = "/var/containers/Bundle/Application/"
     payload_path = "Payload"
     app_bundle_path = f"{app_name}.app"
     ipa_name = f"/var/root/{app_name}.ipa"
 
-    cd_uuid = f"cd /var/containers/Bundle/Application/{app_uuid_path}"
-    print(f"trying to CD in {cd_uuid}")
-    ssh_command(ip, password, cd_uuid)
-
-    mkdir_payload_command = f"mkdir {payload_path}"
+    mkdir_payload_command = f"mkdir {app_path}{app_uuid_path}{payload_path}"
     ssh_command(ip, password, mkdir_payload_command)
 
-    copy_app_command = f"cp -r {app_bundle_path} {payload_path}"
+    copy_app_command = f"cp -r {app_path}{app_uuid_path}{app_bundle_path} {app_path}{app_uuid_path}{payload_path}"
     ssh_command(ip, password, copy_app_command)
 
-    zip_command = f"zip -r {ipa_name} {payload_path}"
+    zip_command = f"zip -r {ipa_name} {app_path}{app_uuid_path}{payload_path}"
     ssh_command(ip, password, zip_command)
 
     # SFTP commands
