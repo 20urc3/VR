@@ -40,17 +40,16 @@ def main():
 
     app_uuid_path = match.group(1)[2:]
     app_path = "/var/containers/Bundle/Application/"
-    payload_path = "/Payload"
-    app_bundle_path = f"/{app_name}.app/"
+    app_bundle_path = f"{app_name}.app/"
     ipa_name = f"/var/root/{app_name}.ipa"
 
-    mkdir_payload_command = f"mkdir {app_path}{app_uuid_path}{payload_path}"
+    mkdir_payload_command = f"cd {app_path}{app_uuid_path} && mkdir Payload"
     ssh_command(ip, password, mkdir_payload_command)
 
-    copy_app_command = f"cp -r {app_path}{app_uuid_path}{app_bundle_path} {app_path}{app_uuid_path}{payload_path}"
+    copy_app_command = f"cd {app_path}{app_uuid_path} && cp -r {app_bundle_path} Payload/"
     ssh_command(ip, password, copy_app_command)
 
-    zip_command = f"zip -r {ipa_name} {app_path}{app_uuid_path}{payload_path}"
+    zip_command = f"cd {app_path}{app_uuid_path} && zip -r {ipa_name} Payload/"
     ssh_command(ip, password, zip_command)
 
     # SFTP commands
